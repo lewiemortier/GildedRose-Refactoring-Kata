@@ -22,4 +22,4 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x Kotlin/gradlew
     - name: Run tests
-      run: ./Kotlin/gradlew check
+      run: cd Kotlin && ./gradlew test
