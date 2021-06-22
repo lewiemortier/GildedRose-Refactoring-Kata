@@ -19,9 +19,7 @@ jobs:
       with:
         java-version: '11'
         distribution: 'adopt'
-    - name: Move to the correct folder
-      run: cd kotlin
     - name: Grant execute permission for gradlew
-      run: chmod +x gradlew
+      run: chmod +x Kotlin/gradlew
     - name: Run tests
-      run: ./gradlew check
+      run: cd Kotlin && ./gradlew test
