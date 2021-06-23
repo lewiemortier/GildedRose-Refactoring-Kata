@@ -1,6 +1,7 @@
 package com.gildedrose
 
 import com.gildedrose.rules.AgedBrieRule
+import com.gildedrose.rules.BackstagePassesRule
 import com.gildedrose.rules.DefaultRule
 import com.gildedrose.rules.GildedRoseRule
 
@@ -21,6 +22,7 @@ class GildedRose(var items: Array<Item>) {
      */
     private val rules: List<GildedRoseRule> = listOf(
             AgedBrieRule(),
+            BackstagePassesRule(),
             DefaultRule()
     )
 
