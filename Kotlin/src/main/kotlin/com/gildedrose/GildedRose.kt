@@ -1,17 +1,8 @@
 package com.gildedrose
 
-import com.gildedrose.rules.AgedBrieRule
-import com.gildedrose.rules.BackstagePassesRule
-import com.gildedrose.rules.DefaultRule
-import com.gildedrose.rules.GildedRoseRule
+import com.gildedrose.rules.*
 
 class GildedRose(var items: Array<Item>) {
-
-    companion object {
-        private const val AGED_BRIE = "Aged Brie"
-        private const val BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert"
-        private const val SULFURAS = "Sulfuras, Hand of Ragnaros"
-    }
 
     /**
      * A list of rules that should be applied to the items when the quality should be updated.
@@ -21,6 +12,7 @@ class GildedRose(var items: Array<Item>) {
      * None of the other rules will be.
      */
     private val rules: List<GildedRoseRule> = listOf(
+            SulfurasRule(),
             AgedBrieRule(),
             BackstagePassesRule(),
             DefaultRule()
