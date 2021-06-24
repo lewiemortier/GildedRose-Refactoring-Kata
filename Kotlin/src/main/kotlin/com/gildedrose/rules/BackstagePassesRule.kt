@@ -2,6 +2,12 @@ package com.gildedrose.rules
 
 import com.gildedrose.Item
 
+/**
+ * A special rule for backstage passes
+ *
+ * The closer you get to the sellIn point, the faster quality increases.
+ * Once the sellIn has passed, quality falls to 0 (as the concert obviously has passed by than and the passes are worthless)
+ */
 class BackstagePassesRule : GildedRoseRule {
 
     private companion object {
