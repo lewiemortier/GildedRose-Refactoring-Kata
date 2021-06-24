@@ -49,16 +49,14 @@ internal class BackstagePassesRuleTest {
     @Test
     internal fun `Increase quality when there are 10 days`() {
         val item = generateItem(sellIn = 11, quality = 10)
-        // sellIn 11 --> sellIn 10
         rule.adjustQuality(item)
 
-        assertEquals(12, item.quality)
+        assertEquals(11, item.quality)
     }
 
     @Test
     internal fun `Increase quality when there are less than 10 days`() {
         val item = generateItem(sellIn = 10, quality = 10)
-        // sellIn 11 --> sellIn 10
         rule.adjustQuality(item)
 
         assertEquals(12, item.quality)
@@ -67,16 +65,14 @@ internal class BackstagePassesRuleTest {
     @Test
     internal fun `Increase quality when there are 5 days left`() {
         val item = generateItem(sellIn = 6, quality = 10)
-        // sellIn 11 --> sellIn 10
         rule.adjustQuality(item)
 
-        assertEquals(13, item.quality)
+        assertEquals(12, item.quality)
     }
 
     @Test
     internal fun `Increase quality when there are less than 5 days left`() {
         val item = generateItem(sellIn = 4, quality = 10)
-        // sellIn 11 --> sellIn 10
         rule.adjustQuality(item)
 
         assertEquals(13, item.quality)
@@ -85,7 +81,6 @@ internal class BackstagePassesRuleTest {
     @Test
     internal fun `Loose quality when sellIn expires`() {
         val item = generateItem(sellIn = 0, quality = 10)
-        // sellIn 11 --> sellIn 10
         rule.adjustQuality(item)
 
         assertEquals(0, item.quality)
@@ -94,7 +89,6 @@ internal class BackstagePassesRuleTest {
     @Test
     internal fun `Quality can not go over 50 when more than 10 days left`() {
         val item = generateItem(sellIn = 20, quality = 50)
-        // sellIn 11 --> sellIn 10
         rule.adjustQuality(item)
 
         assertEquals(50, item.quality)
@@ -103,7 +97,6 @@ internal class BackstagePassesRuleTest {
     @Test
     internal fun `Quality can not go over 50 when when sellIn between 5 and 10 left`() {
         val item = generateItem(sellIn = 7, quality = 49)
-        // sellIn 11 --> sellIn 10
         rule.adjustQuality(item)
 
         assertEquals(50, item.quality)
@@ -112,7 +105,6 @@ internal class BackstagePassesRuleTest {
     @Test
     internal fun `Quality can not go over 50 when when sellIn is less than 5`() {
         val item = generateItem(sellIn = 2, quality = 49)
-        // sellIn 11 --> sellIn 10
         rule.adjustQuality(item)
 
         assertEquals(50, item.quality)

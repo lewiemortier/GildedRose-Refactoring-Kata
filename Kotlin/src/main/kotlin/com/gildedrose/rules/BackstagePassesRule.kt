@@ -15,8 +15,8 @@ class BackstagePassesRule : GildedRoseRule {
     override fun adjustQuality(item: Item) {
         item.sellIn = item.sellIn.dec()
         when {
-            item.sellIn > 10 -> item.quality = minOf(50, item.quality.inc())
-            item.sellIn > 5 -> item.quality = minOf(50, item.quality + 2)
+            item.sellIn >= 10 -> item.quality = minOf(50, item.quality.inc())
+            item.sellIn >= 5 -> item.quality = minOf(50, item.quality + 2)
             item.sellIn >= 0 -> item.quality = minOf(50, item.quality + 3)
             item.sellIn < 0 -> item.quality = 0
         }
