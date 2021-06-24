@@ -19,13 +19,13 @@ internal class GildedRoseTest {
 
     @Test
     internal fun `Quality decreases twice as fast after expiry date passed`() {
-        val item = Item("foo", 0, 2)
+        val item = Item("foo", 0, 4)
         val app = GildedRose(arrayOf(item))
         app.updateQuality()
 
         app.assertQualityAndSellIn(
                 expectedSellIn = -1,
-                expectedQuality = 0
+                expectedQuality = 2
         )
     }
 
