@@ -13,6 +13,7 @@ class GildedRose(var items: Array<Item>) {
      */
     private val rules: List<GildedRoseRule> = listOf(
             SulfurasRule(),
+            ConjuredItemsRule(),
             AgedBrieRule(),
             BackstagePassesRule(),
             DefaultRule()
@@ -25,12 +26,10 @@ class GildedRose(var items: Array<Item>) {
         }
 
         for (item in items) {
-            for (rule in rules) {
-                if (rule.shouldApplyRule(item)) {
-                    rule.adjustQuality(item)
-                    break
-                }
-            }
+            // Find the first rule that should be applied for this item.
+            // If, for some reason there is no rule to apply, use the default one.
+            val ruleToApply = rules.firstOrNull { it.shouldApplyRule(item) } ?: DefaultRule()
+            ruleToApply.adjustQuality(item)
         }
     }
 }
